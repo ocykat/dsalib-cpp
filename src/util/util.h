@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace utils {
+namespace util {
     template <typename T>
     void swap(T& a, T& b) {
         T tmp = a;
@@ -45,6 +45,14 @@ namespace utils {
             res += s[i];
         }
         return res;
+    }
+
+    template <typename T>
+    void printArray(T a[], int begin, int end) {
+        for (int i = begin; i < end; i++) {
+            std::cout << a[i] << ' ';
+        }
+        std::cout << '\n';
     }
 };
 

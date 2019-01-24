@@ -1,7 +1,8 @@
 #pragma once
 
+#include "array-list.h"
 #include "binary-tree.h"
-#include "utils.h"
+#include "../util/util.h"
 
 template <typename Key, typename Node=BinaryTreeNode<Key>>
 class BinarySearchTree : public BinaryTree<Key, Node> {
@@ -81,13 +82,13 @@ protected:
         if (next_larger_parent != rnode) {
             next_larger_parent->left = next_larger->right;
             next_larger->right->parent = next_larger_parent;
-            utils::swap(rnode->key, next_larger->key);
+            util::swap(rnode->key, next_larger->key);
 
             delete next_larger;
             return next_larger_parent;
         }
 
-        utils::swap(rnode->key, next_larger->key);
+        util::swap(rnode->key, next_larger->key);
         rnode->right = next_larger->right;
         next_larger->right->parent = rnode;
 

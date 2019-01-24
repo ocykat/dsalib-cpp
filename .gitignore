@@ -1,6 +1,12 @@
 *
 !.gitignore
+!include/
+!include/*
 !src/
 !src/*
+!src/**/*
+!include/
+!include/*
+!include/**/*
 !README.md
 main.cpp

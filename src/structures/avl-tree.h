@@ -23,7 +23,7 @@ struct AVLTreeNode {
     }
 
     void updateHeight() {
-        height = utils::max(left->height, right->height) + 1;
+        height = util::max(left->height, right->height) + 1;
     }
 };
 

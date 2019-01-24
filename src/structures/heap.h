@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include "array-list.h"
-#include "utils.h"
+#include "../util/util.h"
 
 template <typename Key>
 class Heap {
@@ -22,7 +22,7 @@ private:
     }
 
     void swapKeys(int i, int j) {
-        utils::swap(keys[i], keys[j]);
+        util::swap(keys[i], keys[j]);
     }
 
     void heapify(int i) {
