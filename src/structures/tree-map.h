@@ -15,42 +15,42 @@ private:
 public:
     TreeMap() : size(0) {}
 
-    int getSize() const {
+    int Size() const {
         return size;
     }
 
-    void push( Key key, Value value) {
-        tree.push(KeyValuePair(key, value));
+    void Push( Key key, Value value) {
+        tree.Push(KeyValuePair(key, value));
         size++;
     }
 
-    void pop(Key key) {
-        KeyValuePair refEntry(key);
-        assert(tree.hasKey(refEntry) && "TreeMap::pop(): invalid key");
-        tree.pop(refEntry);
+    void Pop(Key key) {
+        KeyValuePair ref_entry(key);
+        assert(tree.Has(ref_entry) && "TreeMap::Pop(): invalid key");
+        tree.Pop(ref_entry);
         size--;
     }
 
-    bool hasKey(Key key) const {
-        KeyValuePair refEntry(key);
-        return tree.hasKey(refEntry);
+    bool Has(Key key) const {
+        KeyValuePair ref_entry(key);
+        return tree.Has(ref_entry);
     }
 
-    Value get(Key key) const {
-        KeyValuePair refEntry(key);
-        return tree.get(refEntry).value;
+    Value Get(Key key) const {
+        KeyValuePair ref_entry(key);
+        return tree.Get(ref_entry).value;
     }
 
-    Value getMin() const {
-        return tree.getMin().value;
+    Value Min() const {
+        return tree.Min().value;
     }
 
-    Value getMax() const {
-        return tree.getMax().value;
+    Value Max() const {
+        return tree.Max().value;
     }
 
-    ArrayList<KeyValuePair> getEntries() {
-        return tree.getArrayList();
+    ArrayList<KeyValuePair> Entries() {
+        return tree.GetArrayList();
     }
 
     ~TreeMap() = default;

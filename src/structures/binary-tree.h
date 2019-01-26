@@ -11,7 +11,7 @@ struct BinaryTreeNode {
 
     BinaryTreeNode() = default;
 
-    static BinaryTreeNode* createNil() {
+    static BinaryTreeNode* CreateNil() {
         auto nil = new BinaryTreeNode();
         nil->parent = nil;
         nil->left = nil;
@@ -28,50 +28,50 @@ protected:
     Node* nil;
 
     BinaryTree() {
-        nil = Node::createNil();
+        nil = Node::CreateNil();
         root = nil;
     }
 
-    virtual void insert(Node*) = 0;
-    virtual Node* remove(Node*) = 0;
+    virtual void Insert(Node*) = 0;
+    virtual Node* Remove(Node*) = 0;
 
-    virtual void push(Key key) = 0;
-    virtual void pop(Key key) = 0;
+    virtual void Push(Key key) = 0;
+    virtual void Pop(Key key) = 0;
 
-    void getNodeString(Node* node, std::string& res, const std::string& pad) const {
+    void GetNodeString(Node* node, std::string& res, const std::string& pad) const {
         if (node == nil) return;
         res += pad + ' ' + std::to_string(node->key) + ' ';
         if (node->left == nil && node->right == nil) {
             return;
         }
         res += "( ";
-        getNodeString(node->left, res, "L");
-        getNodeString(node->right, res, "R");
+        GetNodeString(node->left, res, "L");
+        GetNodeString(node->right, res, "R");
         res += ") ";
     }
 
-    std::string getString() const {
+    std::string GetString() const {
         std::string res;
-        getNodeString(root, res, "");
+        GetNodeString(root, res, "");
         return res;
     }
 
     friend std::ostream& operator<<(std::ostream& os, const BinaryTree& tree) {
         os << "Binary Tree[";
-        os << tree.getString();
+        os << tree.GetString();
         os << " ]";
         return os;
     }
 
-    void destroy(Node* node) {
+    void Destroy(Node* node) {
         if (node == nil) return;
-        destroy(node->left);
-        destroy(node->right);
+        Destroy(node->left);
+        Destroy(node->right);
         delete node;
     }
 
     virtual ~BinaryTree() {
-        destroy(root);
+        Destroy(root);
         delete nil;
     }
 };

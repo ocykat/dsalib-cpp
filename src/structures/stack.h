@@ -5,35 +5,35 @@
 template <typename Key>
 class Stack {
 private:
-    SinglyLinkedList<Key> linkedList;
+    SinglyLinkedList<Key> linked_list;
 
 public:
     Stack() = default;
 
-    int getSize() const {
-        return linkedList.getSize();
+    int Size() const {
+        return linked_list.Size();
     }
 
-    bool isEmpty() const {
-        return linkedList.getSize() == 0;
+    bool Empty() const {
+        return linked_list.Size() == 0;
     }
 
-    void push(Key key) {
-        linkedList.pushFront(key);
+    void Push(Key key) {
+        linked_list.PushFront(key);
     }
 
-    Key pop() {
-        assert(linkedList.getSize() > 0 && "Stack::pop(): empty");
-        return linkedList.popFront();
+    Key Pop() {
+        assert(linked_list.Size() > 0 && "Stack::Pop(): empty");
+        return linked_list.PopFront();
     }
 
-    Key getTop() const {
-        assert(linkedList.getSize() > 0 && "Stack::getTop(): empty");
-        return linkedList.getFront();
+    Key Top() const {
+        assert(linked_list.Size() > 0 && "Stack::Top(): empty");
+        return linked_list.Front();
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Stack& stack) {
-        os << "Stack[ " << stack.linkedList << " ]";
+        os << "Stack[ " << stack.linked_list << " ]";
         return os;
     }
 

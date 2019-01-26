@@ -4,7 +4,7 @@
 
 namespace merge_sort {
     template <typename T>
-    void merge(T a[], int begin, int mid, int end) {
+    void Merge(T a[], int begin, int mid, int end) {
         int n_left = mid - begin;
         int n_right = end - mid;
 
@@ -42,12 +42,12 @@ namespace merge_sort {
     }
 
     template <typename T>
-    void sort(T a[], int begin, int end) {
+    void Sort(T a[], int begin, int end) {
         if (begin < end - 1) {
             int mid = (begin + end) / 2;
-            sort(a, begin, mid);
-            sort(a, mid, end);
-            merge(a, begin, mid, end);
+            Sort(a, begin, mid);
+            Sort(a, mid, end);
+            Merge(a, begin, mid, end);
         }
     }
 };

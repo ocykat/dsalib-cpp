@@ -4,7 +4,7 @@
 
 namespace quick_sort {
     template <typename T>
-    int partition(T a[], int begin, int end) {
+    int Partition(T a[], int begin, int end) {
         T pivot_key = a[end - 1];
         int pivot = begin;
 
@@ -21,11 +21,11 @@ namespace quick_sort {
     }
 
     template <typename T>
-    void sort(T a[], int begin, int end) {
+    void Sort(T a[], int begin, int end) {
         if (begin < end - 1) {
-            int pivot = partition(a, begin, end);
-            sort(a, begin, pivot);
-            sort(a, pivot, end);
+            int pivot = Partition(a, begin, end);
+            Sort(a, begin, pivot);
+            Sort(a, pivot, end);
         }
     }
 };

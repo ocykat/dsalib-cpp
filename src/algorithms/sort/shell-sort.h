@@ -2,7 +2,7 @@
 
 namespace shell_sort {
     template <typename T>
-    void phase(T a[], int begin, int end, int gap) {
+    void Phase(T a[], int begin, int end, int gap) {
         for (int i = begin + gap; i < end; i += gap) {
             int x = a[i];
             int j;
@@ -14,11 +14,11 @@ namespace shell_sort {
     }
 
     template <typename T>
-    void sort(T a[], int begin, int end) {
+    void Sort(T a[], int begin, int end) {
         int n = (end - begin) / 2;
         for (int gap = n; gap > 0; gap /= 2) {
             for (int i = gap; i < n; i++) {
-                phase(a, begin, end, gap);
+                Phase(a, begin, end, gap);
             }
         }
     }

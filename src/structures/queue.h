@@ -6,35 +6,35 @@
 template <typename Key>
 class Queue {
 private:
-    DoublyLinkedList<Key> linkedList;
+    DoublyLinkedList<Key> linked_list;
 
 public:
     Queue() = default;
 
-    int getSize() const {
-        return linkedList.getSize();
+    int Size() const {
+        return linked_list.Size();
     }
 
-    bool isEmpty() const {
-        return linkedList.getSize() == 0;
+    bool Empty() const {
+        return linked_list.Size() == 0;
     }
 
-    void enqueue(Key key) {
-        linkedList.pushBack(key);
+    void Enqueue(Key key) {
+        linked_list.PushBack(key);
     }
 
-    Key dequeue() {
-        assert(linkedList.getSize() > 0 && "Queue::dequeue(): empty");
-        return linkedList.popFront();
+    Key Dequeue() {
+        assert(linked_list.Size() > 0 && "Queue::dequeue(): empty");
+        return linked_list.PopFront();
     }
 
-    Key getFront() const {
-        assert(linkedList.getSize() > 0 && "Queue::getTop(): empty");
-        return linkedList.getFront();
+    Key Front() const {
+        assert(linked_list.Size() > 0 && "Queue::getTop(): empty");
+        return linked_list.Front();
     }
 
     friend std::ostream& operator<<(std::ostream& os, const Queue& queue) {
-        os << "Queue[ " << queue.linkedList << " ]";
+        os << "Queue[ " << queue.linked_list << " ]";
         return os;
     }
 

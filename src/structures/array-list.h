@@ -10,7 +10,7 @@ private:
     Key* keys;
     int size;
 
-    void reallocate() {
+    void Reallocate() {
         Key* old_keys = keys;
         keys = new Key[capacity * 2];
         for (int i = 0; i < capacity; i++) {
@@ -27,19 +27,19 @@ public:
         keys = new Key[capacity];
     }
 
-    int getSize() const {
+    int Size() const {
         return size;
     }
 
-    void pushBack(Key key) {
+    void PushBack(Key key) {
         if (size == capacity) {
-            reallocate();
+            Reallocate();
         }
         keys[size] = key;
         size++;
     }
 
-    Key popBack() {
+    Key PopBack() {
         assert(size > 0 && "ArrayList::popBack(): empty list");
         size--;
         Key key = keys[size];

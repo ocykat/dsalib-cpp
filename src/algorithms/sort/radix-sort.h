@@ -2,7 +2,7 @@
 
 namespace radix_sort {
     template <typename T>
-    T get_max(T a[], int begin, int end) {
+    T Max(T a[], int begin, int end) {
         T max_value = a[begin];
 
         for (int i = begin + 1; i < end; i++) {
@@ -15,7 +15,7 @@ namespace radix_sort {
     }
 
     template <typename T>
-    void counting_sort(T a[], int begin, int end, int exp) {
+    void CountingSort(T a[], int begin, int end, int exp) {
         int n = end - begin;
         int f[10];
         int digit[n];
@@ -47,10 +47,10 @@ namespace radix_sort {
     }
 
     template <typename T>
-    void sort(T a[], int begin, int end) {
+    void Sort(T a[], int begin, int end) {
         int n = end - begin;
 
-        T max_value = get_max(a, begin, end);
+        T max_value = Max(a, begin, end);
         int max_num_digits = 0;
 
         while (max_value > 0) {
@@ -61,7 +61,7 @@ namespace radix_sort {
         int exp = 1;
 
         for (int i = 1; i <= max_num_digits; i++) {
-            counting_sort(a, begin, end, exp);
+            CountingSort(a, begin, end, exp);
             exp *= 10;
         }
     }

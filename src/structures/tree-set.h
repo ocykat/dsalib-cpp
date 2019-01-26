@@ -13,35 +13,35 @@ private:
 public:
     TreeSet() : size(0) {}
 
-    int getSize() const {
+    int Size() const {
         return size;
     }
 
-    void push(T key) {
-        tree.push(key);
+    void Push(T key) {
+        tree.Push(key);
         size++;
     }
 
-    void pop(T key) {
-        assert(tree.hasKey(key) && "TreeSet::pop(): invalid key");
-        tree.pop(key);
+    void Pop(T key) {
+        assert(tree.Has(key) && "TreeSet::Pop(): invalid key");
+        tree.Pop(key);
         size--;
     }
 
-    bool hasKey(T key) const {
-        return tree.hasKey(key);
+    bool Has(T key) const {
+        return tree.Has(key);
     }
 
-    T getMin() {
-        return tree.getMin();
+    T Min() {
+        return tree.Min();
     }
 
-    T getMax() {
-        return tree.getMax();
+    T Max() {
+        return tree.Max();
     }
 
-    ArrayList<T> getEntries() {
-        return tree.getArrayList();
+    ArrayList<T> Entries() {
+        return tree.GetArrayList();
     }
 
     ~TreeSet() = default;

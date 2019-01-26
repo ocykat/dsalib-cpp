@@ -32,19 +32,19 @@ public:
         size = 0;
     }
 
-    int getSize() const {
+    int Size() const {
         return size;
     }
 
-    void pushFront(Key key) {
+    void PushFront(Key key) {
         auto front = new Node(key);
         front->next = nil->next;
         nil->next = front;
         size++;
     }
 
-    Key popFront() {
-        assert(size > 0 && "SinglyLinkedList::popFront(): empty");
+    Key PopFront() {
+        assert(size > 0 && "SinglyLinkedList::PopFront(): empty");
         auto front = nil->next;
         Key key = front->key;
         nil->next = front->next;
@@ -53,7 +53,7 @@ public:
         return key;
     }
 
-    Key getFront() const {
+    Key Front() const {
         return nil->next->key;
     }
 

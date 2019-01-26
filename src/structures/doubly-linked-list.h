@@ -10,7 +10,7 @@ struct DoublyLinkedListNode {
 
     DoublyLinkedListNode() = default;
 
-    static DoublyLinkedListNode* createNil() {
+    static DoublyLinkedListNode* CreateNil() {
         auto nil = new DoublyLinkedListNode();
         nil->prev = nil;
         nil->next = nil;
@@ -30,15 +30,15 @@ private:
 
 public:
     DoublyLinkedList() {
-        nil = DoublyLinkedListNode<Key>::createNil();
+        nil = DoublyLinkedListNode<Key>::CreateNil();
         size = 0;
     }
 
-    int getSize() const {
+    int Size() const {
         return size;
     }
 
-    void pushFront(Key key) {
+    void PushFront(Key key) {
         Node* front = new Node(key);
         front->next = nil->next;
         front->prev = nil;
@@ -47,7 +47,7 @@ public:
         size++;
     }
 
-    Key popFront() {
+    Key PopFront() {
         assert(size > 0 && "DoublyLinkedList::popFront(): empty");
         Node* front = nil->next;
         Key key = front->key;
@@ -58,7 +58,7 @@ public:
         return key;
     }
 
-    void pushBack(Key key) {
+    void PushBack(Key key) {
         Node* back = new Node(key);
         back->prev = nil->prev;
         back->next = nil;
@@ -67,7 +67,7 @@ public:
         size++;
     }
 
-    Key popBack() {
+    Key PopBack() {
         assert(size > 0 && "DoublyLinkedList::popBack(): empty");
         Node* back = nil->prev;
         Key key = back->key;
@@ -78,11 +78,11 @@ public:
         return key;
     }
 
-    Key getFront() const {
+    Key Front() const {
         return nil->next->key;
     }
 
-    Key getBack() const {
+    Key Back() const {
         return nil->prev->key;
     }
 

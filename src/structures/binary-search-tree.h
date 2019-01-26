@@ -7,7 +7,7 @@
 template <typename Key, typename Node=BinaryTreeNode<Key>>
 class BinarySearchTree : public BinaryTree<Key, Node> {
 protected:
-    virtual void insert(Node* inode) {
+    virtual void Insert(Node* inode) {
         auto parent = this->nil;
         auto curr = this->root;
 
@@ -37,7 +37,7 @@ protected:
         }
     }
 
-    virtual Node* remove(Node* rnode) {
+    virtual Node* Remove(Node* rnode) {
         if (rnode == this->nil) return this->nil;
 
         Node* rnode_parent = rnode->parent;
@@ -76,7 +76,7 @@ protected:
         }
 
         // Case 2: rnode has both children
-        Node* next_larger = this->getMinNode(rnode->right);
+        Node* next_larger = this->MinNode(rnode->right);
         Node* next_larger_parent = next_larger->parent;
 
         if (next_larger_parent != rnode) {
@@ -96,7 +96,7 @@ protected:
         return rnode;
     }
 
-    Node* search(Key key) const {
+    Node* Search(Key key) const {
         Node* curr = this->root;
 
         while (curr != this->nil && curr->key != key) {
@@ -111,7 +111,7 @@ protected:
         return curr;
     }
 
-    Node* getMinNode(Node* root) const {
+    Node* MinNode(Node* root) const {
         Node* curr = root;
 
         while (curr->left != this->nil) {
@@ -121,7 +121,7 @@ protected:
         return curr;
     }
 
-    Node* getMaxNode(Node* root) const {
+    Node* MaxNode(Node* root) const {
         Node* curr = root;
 
         while (curr->right != this->nil) {
@@ -132,44 +132,44 @@ protected:
     }
 
 public:
-    virtual void push(Key key) {
+    virtual void Push(Key key) {
         auto inode = new Node(key);
         inode->left = this->nil;
         inode->right = this->nil;
         inode->parent = this->nil;
-        this->insert(inode);
+        this->Insert(inode);
     }
 
-    virtual void pop(Key key) {
-        this->remove(this->search(key));
+    virtual void Pop(Key key) {
+        this->Remove(this->Search(key));
     }
 
-    bool hasKey(Key key) const {
-        return this->search(key) != this->nil;
+    bool Has(Key key) const {
+        return this->Search(key) != this->nil;
     }
 
-    Key get(Key key) const {
-        return this->search(key)->key;
+    Key Get(Key key) const {
+        return this->Search(key)->key;
     }
 
-    Key getMin() const {
-        return getMinNode(this->root)->key;
+    Key Min() const {
+        return MinNode(this->root)->key;
     }
 
-    Key getMax() const {
-        return getMaxNode(this->root)->key;
+    Key Max() const {
+        return MaxNode(this->root)->key;
     }
 
-    void inOrderGetKey(Node* node, ArrayList<Key>& list) {
+    void InOrderGetKey(Node* node, ArrayList<Key>& list) {
         if (node == this->nil) return;
-        inOrderGetKey(node->left, list);
-        list.pushBack(node->key);
-        inOrderGetKey(node->right, list);
+        InOrderGetKey(node->left, list);
+        list.PushBack(node->key);
+        InOrderGetKey(node->right, list);
     }
 
-    ArrayList<Key> getArrayList() {
+    ArrayList<Key> GetArrayList() {
         ArrayList<Key> list;
-        inOrderGetKey(this->root, list);
+        InOrderGetKey(this->root, list);
         return list;
     }
 };

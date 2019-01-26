@@ -14,7 +14,7 @@ struct AVLTreeNode {
 
     AVLTreeNode(Key key) : key(key) {}
 
-    static AVLTreeNode* createNil() {
+    static AVLTreeNode* CreateNil() {
         auto nil = new AVLTreeNode();
         nil->parent = nil;
         nil->left = nil;
@@ -22,7 +22,7 @@ struct AVLTreeNode {
         nil->height = -1;
     }
 
-    void updateHeight() {
+    void UpdateHeight() {
         height = util::max(left->height, right->height) + 1;
     }
 };
@@ -39,7 +39,7 @@ protected:
      *         beta  gamma         alpha  beta
      * @param x
     **/
-   void leftRotate(Node* x) {
+    void LeftRotate(Node* x) {
         Node* y = x->right;
         Node* p = x->parent;
         Node* beta = y->left;
@@ -52,7 +52,7 @@ protected:
 
         y->parent = p;
 
-        if (x->parent == this->nil) {
+        if (p == this->nil) {
             this->root = y;
         }
         else if (x == p->left) {
@@ -65,8 +65,8 @@ protected:
         x->parent = y;
         y->left = x;
 
-        x->updateHeight();
-        y->updateHeight();
+        x->UpdateHeight();
+        y->UpdateHeight();
     }
 
     /**
@@ -78,66 +78,66 @@ protected:
      *    alpha  beta                  beta  gamma
      * @param y
     **/
-   void rightRotate(Node* y) {
-       Node* x = y->right;
-       Node* p = y->parent;
-       Node* beta = x->right;
+    void RightRotate(Node* y) {
+        Node* x = y->left;
+        Node* p = y->parent;
+        Node* beta = x->right;
 
-       y->left = beta;
+        y->left = beta;
 
-       if (beta != this->nil) {
-           beta->parent = y;
-       }
+        if (beta != this->nil) {
+            beta->parent = y;
+        }
 
-       x->parent = p;
+        x->parent = p;
 
-       if (p == this->nil) {
-           this->root = x;
-       }
-       else if (y == p->left) {
-           p->left = x;
-       }
-       else {
-           p->right = x;
-       }
+        if (p == this->nil) {
+            this->root = x;
+        }
+        else if (y == p->left) {
+            p->left = x;
+        }
+        else {
+            p->right = x;
+        }
 
-       y->parent = x;
-       x->right = y;
+        y->parent = x;
+        x->right = y;
 
-       x->updateHeight();
-       y->updateHeight();
-   }
+        x->UpdateHeight();
+        y->UpdateHeight();
+    }
 
     /**
-     * @function rebalance: rebalance a node and then rebalance upward recursively
+     * @function Rebalance: rebalance a node and then rebalance upward recursively
      * @param node
     **/
-    void rebalance(Node* node) {
+    void Rebalance(Node* node) {
         while (node != this->nil) {
-            node->updateHeight();
+            node->UpdateHeight();
 
             if (node->left->height >= node->right->height + 2) {
             // LH
                 if (node->left->left->height >= node->left->right->height) {
                 // LH of LH: 1 rotation
-                    rightRotate(node);
+                    RightRotate(node);
                 }
                 else {
                 // RH of LH: 2 rotations
-                    leftRotate(node->left);
-                    rightRotate(node);
+                    LeftRotate(node->left);
+                    RightRotate(node);
                 }
             }
             else if (node->right->height >= node->left->height + 2) {
             // RH
                 if (node->right->right->height >= node->right->left->height) {
                 // RH of RH: 1 rotation
-                    leftRotate(node);
+                    LeftRotate(node);
                 }
                 else {
                 // LH of RH: 2 rotations
-                    rightRotate(node->right);
-                    leftRotate(node);
+                    RightRotate(node->right);
+                    LeftRotate(node);
                 }
             }
 
@@ -145,14 +145,14 @@ protected:
         }
     }
 
-    void insert(Node* inode) {
-        BinarySearchTree<Key, Node>::insert(inode);
-        this->rebalance(inode);
+    void Insert(Node* inode) {
+        BinarySearchTree<Key, Node>::Insert(inode);
+        this->Rebalance(inode);
     }
 
-    Node* remove(Node* rnode) {
-        Node* rnode_parent = BinarySearchTree<Key, Node>::remove(rnode);
-        this->rebalance(rnode_parent);
+    Node* Remove(Node* rnode) {
+        Node* rnode_parent = BinarySearchTree<Key, Node>::Remove(rnode);
+        this->Rebalance(rnode_parent);
         return this->nil; // this return value is unused
     }
 };

@@ -4,7 +4,7 @@
 
 namespace bubble_sort {
     template <typename T>
-    void sort(T a[], int begin, int end) {
+    void Sort(T a[], int begin, int end) {
         for (int i = begin; i < end - 1; i++) {
             bool sorted = true;
             for (int j = begin + 1; j < end - i; j++) {

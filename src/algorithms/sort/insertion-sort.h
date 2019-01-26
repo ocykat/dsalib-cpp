@@ -2,7 +2,7 @@
 
 namespace insertion_sort {
     template <typename T>
-    void sort(T a[], int begin, int end) {
+    void Sort(T a[], int begin, int end) {
         for (int i = begin + 1; i < end; i++) {
             int x = a[i];
             int j;

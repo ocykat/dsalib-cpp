@@ -11,7 +11,7 @@ namespace selection_sort {
      * @return index of the smallest element in the segment [begin, end)
      */
     template <typename T>
-    int minIndex(T a[], int begin, int end) {
+    int MinIndex(T a[], int begin, int end) {
         int min_index = begin;
         for (int i = begin + 1; i < end; i++) {
             if (a[i] < a[min_index]) {
@@ -22,9 +22,9 @@ namespace selection_sort {
     }
 
     template <typename T>
-    void sort(T a[], int begin, int end) {
+    void Sort(T a[], int begin, int end) {
         for (int i = 0; i < end - 1; i++) {
-            int j = minIndex(a, i + 1, end); // O(n)
+            int j = MinIndex(a, i + 1, end); // O(n)
             util::swap(a[i], a[j]);
         }
     }
