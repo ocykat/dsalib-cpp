@@ -169,7 +169,7 @@ public:
 
     ArrayList<Key> getArrayList() {
         ArrayList<Key> list;
-        inOrderGetKey(this->root);
+        inOrderGetKey(this->root, list);
         return list;
     }
 };

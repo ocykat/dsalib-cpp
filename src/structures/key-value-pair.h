@@ -35,5 +35,17 @@ struct KeyValuePair {
         return key >= other.key;
     }
 
+    bool operator=(const KeyValuePair& other) {
+        this->key = other.key;
+        this->value = other.value;
+    }
+
+    friend std::ostream& operator<<(std::ostream& os, const KeyValuePair& pair) {
+        os << "Pair[ ";
+        os << "key = " << pair.key << ", ";
+        os << "value = " << pair.value << " ]";
+        return os;
+    }
+
     ~KeyValuePair() = default;
 };

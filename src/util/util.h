@@ -22,33 +22,33 @@ namespace util {
         return b;
     }
 
-    bool isUpperCase(const char& c) {
+    bool IsUpperCase(const char& c) {
         return 'A' <= c && c <= 'Z';
     }
 
-    bool isLowerCase(const char& c) {
+    bool IsLowerCase(const char& c) {
         return 'a' <= c && c <= 'z';
     }
 
-    bool isLetter(const char& c) {
-        return isUpperCase(c) || isLowerCase(c);
+    bool IsLetter(const char& c) {
+        return IsUpperCase(c) || IsLowerCase(c);
     }
 
-    bool isDigit(const char& c) {
+    bool IsDigit(const char& c) {
         return '0' <= c && c <= '9';
     }
 
-    std::string removeWhitespaces(std::string s) {
+    void RemoveSpaces(std::string& s) {
         std::string res;
-        for (int i = 0; i < (int) s.length(); i++) {
-            if (s[i] == ' ') continue;
-            res += s[i];
+        for (char c : s) {
+            if (c == ' ') continue;
+            res += c;
         }
-        return res;
+        s = res;
     }
 
     template <typename T>
-    void printArray(T a[], int begin, int end) {
+    void PrintArray(T a[], int begin, int end) {
         for (int i = begin; i < end; i++) {
             std::cout << a[i] << ' ';
         }

@@ -28,7 +28,7 @@ public:
         size--;
     }
 
-    void hasKey(T key) {
+    bool hasKey(T key) const {
         return tree.hasKey(key);
     }
 

@@ -4,7 +4,6 @@
 
 template <typename Key>
 struct SinglyLinkedListNode {
-protected:
     Key key;
     SinglyLinkedListNode* next;
 

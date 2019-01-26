@@ -15,6 +15,10 @@ public:
         return linkedList.getSize();
     }
 
+    bool isEmpty() const {
+        return linkedList.getSize() == 0;
+    }
+
     void enqueue(Key key) {
         linkedList.pushBack(key);
     }
